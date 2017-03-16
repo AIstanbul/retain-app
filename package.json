@@ -24,10 +24,10 @@
     "zone.js": "^0.6.25"
   },
   "devDependencies": {
-    "@types/core-js": "^0.9.33",
-    "@types/lodash": "^4.14.35",
-    "@types/node": "^6.0.39",
-    "awesome-typescript-loader": "^2.2.4",
+    "@types/core-js": "0.9.33",
+    "@types/lodash": "4.14.35",
+    "@types/node": "6.0.39",
+    "awesome-typescript-loader": "=2.2.4",
     "css-loader": "^0.23.1",
     "jasmine-core": "^2.4.1",
     "karma": "^1.1.1",
@@ -37,7 +37,7 @@
     "raw-loader": "^0.5.1",
     "to-string-loader": "^1.1.4",
     "ts-helpers": "^1.1.1",
-    "typescript": "^2.0.2",
+    "typescript": "=2.0.10",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   }
