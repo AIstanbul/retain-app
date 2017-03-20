@@ -40,8 +40,16 @@ import {
     }
   `],
   template: `
-    <div class="note-card row shadow-1">
-      <div class="icon" (click)="onChecked()">
+    <div 
+    class="note-card row shadow-1"
+    (mouseleave)="toogleCheck()"
+    (mouseenter)="toogleCheck()"
+    [ngStyle]="{'background-color' : note.color}">
+      <div 
+      class="icon" 
+      (click)="onChecked()"
+      *ngIf="showCheck"
+      >
         <i class="material-icons">check</i>
       </div>
       <div class="col-xs-12 title">
@@ -55,8 +63,13 @@ import {
 })
 export class NoteCard {
   @Input() note = {};
+  showCheck: boolean = false;
 
   onChecked() {
     console.log('note clicked');
+  }
+
+  toogleCheck() {
+    this.showCheck = !this.showCheck;
   }
 }
