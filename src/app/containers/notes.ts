@@ -20,6 +20,8 @@ import { Component } from '@angular/core';
           <note-card
             class="col-xs-4"
             [note]="note"
+            *ngFor="let note of notes;let i = index"
+            (checked)="onNoteChecked(i)"
           >
           </note-card>
         </div>
@@ -28,5 +30,13 @@ import { Component } from '@angular/core';
   `
 })
 export class Notes {
-  note = {title: 'Chores', value: 'Don\'t forget to clean up', color: 'lighblue'};
+  notes = [
+    {title: 'Angular', value: 'Don\'t forget to learn', color: 'lightblue'},
+    {title: 'Child', value: 'Don\'t forget to search at school', color: 'green'},
+    {title: 'Food', value: 'Don\'t forget to cook', color: 'yellow'}
+  ]
+
+  onNoteChecked(i: number) {
+    this.notes.splice(i,1);
+  }
 }

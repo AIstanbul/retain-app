@@ -46,7 +46,10 @@ import {
       (mouseenter)="toggleCheck()"
       (mouseleave)="toggleCheck()"
     >
-      <div class="icon" *ngIf="showCheck" (click)="onChecked()">
+      <div class="icon" 
+      *ngIf="showCheck" 
+      (click)="onChecked()"
+      >
         <i class="material-icons">check</i>
       </div>
       <div class="col-xs-12 title">
@@ -60,6 +63,7 @@ import {
 })
 export class NoteCard {
   @Input() note = {};
+  @Output() checked = new EventEmitter();
   showCheck: boolean = false;
 
   toggleCheck() {
@@ -67,6 +71,6 @@ export class NoteCard {
   }
 
   onChecked() {
-    console.log('note clicked');
+    this.checked.next(this.note);
   }
 }
