@@ -29,15 +29,18 @@ import {
           name="newNoteTitle"
           placeholder="Title"
           class="col-xs-10 title"
+          *ngIf="focused"
         >
         <input
           type="text"
+          (focus)="toogle()"
           [(ngModel)]="newNote.value"
           name="newNoteValue"
           placeholder="Take a note..."
           class="col-xs-10"
         >
-        <div class="actions col-xs-12 row between-xs">
+        <div class="actions col-xs-12 row between-xs"
+        	 *ngIf="focused">
           <button
             type="submit"
             class="btn-light"
@@ -51,6 +54,8 @@ import {
 })
 export class NoteCreator {
   @Output() createNote = new EventEmitter();
+  focused: boolean = false;
+
   newNote = {
     title: '',
     value: ''
@@ -64,6 +69,7 @@ export class NoteCreator {
     }
 
     this.reset();
+    this.focused = false;
   }
 
   reset() {
@@ -71,5 +77,10 @@ export class NoteCreator {
       title: '',
       value: ''
     };
+  }
+
+  toogle(){
+  	this.focused = true;
+
   }
 }
