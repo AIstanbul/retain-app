@@ -13,7 +13,8 @@ import { Component } from '@angular/core';
   template: `
     <div class="row center-xs notes">
       <div class="col-xs-6 creator">
-        <note-creator></note-creator>
+        <note-creator (createNote)="onCreateNote($event)">
+        </note-creator>
       </div>
       <div class="notes col-xs-8">
         <div class="row between-xs">
@@ -22,6 +23,7 @@ import { Component } from '@angular/core';
             [note]="note"
             *ngFor="let note of notes; let i = index"
             (checked)="onNoteChecked($event, i)"
+
           >
           </note-card>
         </div>
@@ -30,6 +32,7 @@ import { Component } from '@angular/core';
   `
 })
 export class Notes {
+
   notes = [
     {title: 'Chores', value: 'Don\'t forget to clean up', color: 'lighblue'},
     {title: 'Food', value: 'meal prep tonight please!', color: 'seagreen'},
@@ -38,5 +41,9 @@ export class Notes {
 
   onNoteChecked(note, i) {
     this.notes.splice(i, 1);
+  }
+
+  onCreateNote(note) {
+    this.notes.push(note);
   }
 }
